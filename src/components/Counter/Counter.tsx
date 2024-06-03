@@ -1,23 +1,16 @@
-import { decrement, increment, useAppDispatch, useAppSelector } from '../../store/redux';
+import { useCounter } from '../../store';
 
 export const Counter = () => {
-    const count = useAppSelector((state) => state.counter.value);
-    const dispatch = useAppDispatch();
+    const { increment, decrement, count } = useCounter();
 
     return (
         <div>
             <div>
-                <button
-                    aria-label="Increment value"
-                    onClick={() => dispatch(increment())}
-                >
+                <button aria-label="Increment value" onClick={increment}>
                     Increment
                 </button>
                 <span>{count}</span>
-                <button
-                    aria-label="Decrement value"
-                    onClick={() => dispatch(decrement())}
-                >
+                <button aria-label="Decrement value" onClick={decrement}>
                     Decrement
                 </button>
             </div>
